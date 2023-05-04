@@ -1,0 +1,41 @@
+<p>offres-emploi works!</p>
+<ul>
+    <li *ngFor="let emploi of listeEmploi">
+      {{ emploi.reference }} - {{ emploi.titre }} chez {{ emploi.entreprise }}
+    </li>
+  </ul>
+  <div *ngFor="let emploi of listeEmploi">
+    <h3>{{ emploi.titre }}</h3>
+    <p>{{ emploi.entreprise }}</p>
+    <p>{{ emploi.reference }}</p>
+    <button [disabled]="!emploi.etat">Postuler</button>
+  </div>
+
+  <div *ngFor="let emploi of listeEmploi">
+    <h3>{{ emploi.titre }}</h3>
+    <p>{{ emploi.entreprise }}</p>
+    <p>{{ emploi.reference }}</p>
+    <button [disabled]="!emploi.etat">Postuler</button>
+  </div>
+  
+  <button (click)="calculerBilan()">Bilan</button>
+  <p>Nombre d'offres d'emploi non clôturées : {{ nombreOffresNonCloturees }}</p>
+
+  <form>
+    <div class="form-group">
+      <label for="entreprise">Chercher par entreprise:</label>
+      <input type="text" class="form-control" id="entreprise" name="entreprise">
+    </div>
+    <button type="submit" class="btn btn-primary">Chercher</button>
+  </form>
+
+  <div class="form-group">
+    <label for="entreprise">Chercher par entreprise:</label>
+    <input type="text" class="form-control" id="entreprise" name="entreprise" [(ngModel)]="entrepriseRecherchee">
+    <button class="btn btn-primary" (click)="chercherEmploiParEntreprise(entrepriseRecherchee)">Chercher</button>
+  </div>
+  
+  
+  <ul *ngIf="listeEmploiFiltree.length > 0">
+    <li *ngFor="let emploi of listeEmploiFiltree">{{ emploi.reference }} - {{ emploi.titre }} - {{ emploi.entreprise }} - {{ emploi.etat }}</li>
+  </ul>

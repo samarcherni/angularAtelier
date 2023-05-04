@@ -1,0 +1,38 @@
+<form #f="ngForm">
+    <div class="form-group">
+      <label for="exampleInputEmail1">id</label>
+      <input type="number" class="form-control" name="id" placeholder="id" [(ngModel)]="product.id" required #id="ngModel">
+    </div>
+    <div class="alert alert-danger" *ngIf="id.invalid && id.touched">
+      <p *ngIf="id.errors?.['required']">id is required</p>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">title</label>
+        <input type="text" class="form-control" name="title" placeholder="title"[(ngModel)]="product.title" required minlength="3" #title="ngModel">
+      </div>
+      <div class="alert alert-danger" *ngIf="title.invalid && title.touched">
+        <p *ngIf="title.errors?.['required']">title is required</p>
+        <p *ngIf="title.errors?.['minlength']">minimum 3</p>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">price</label>
+        <input type="number" class="form-control" name="price" placeholder="price" [(ngModel)]="product.price" required #price="ngModel">
+      </div>
+      <div class="alert alert-danger" *ngIf="price.invalid && price.touched">
+        <p *ngIf="price.errors?.['required']">price is required</p>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">quantity</label>
+        <input type="number" class="form-control" name="quantity" placeholder="quantity" [(ngModel)]="product.quantity" required min="100" #quantity="ngModel">
+      </div>
+      <div class="alert alert-danger" *ngIf="quantity.invalid && quantity.touched">
+        <p *ngIf="quantity.errors?.['required']">quantity is required</p>
+        <p *ngIf="quantity.errors?.['min']">minimum 100</p>
+      </div>
+    <button type="submit" class="btn btn-primary" [disabled]="f.invalid" (click)="ajouterProduct()">Submit</button>
+  </form>
+{{product.id}}
+{{product.title}}
+{{product.price}}
+{{product.quantity}}
+<!-- hedhi besh ntesti si l objet 9a3ed yet3aba ou non -->

@@ -1,0 +1,17 @@
+<p>articles-component works!</p>
+<h1>{{ titre }}</h1>
+
+<input type="text" [(ngModel)]="nombreArticlesAffiches" placeholder="Nombre total des articles">
+
+<div *ngIf="listeArticles.length > 0">Nombre total des articles : {{listeArticles.length}}</div>
+
+<ul>
+    <li *ngFor="let article of listeArticles" [ngClass]="{'blue': article.categorie === 'Education'}">
+      <h2>{{article.titre}}</h2>
+      <p>{{article.contenu}}</p>
+      <p>Par {{article.auteur}} le {{article.date}}</p>
+      <p>Catégorie : {{article.categorie}}</p>
+    </li>
+  </ul>
+
+  
